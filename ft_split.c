@@ -6,7 +6,7 @@
 /*   By: lbagg <lbagg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 22:28:14 by lbagg             #+#    #+#             */
-/*   Updated: 2020/05/16 12:35:28 by student          ###   ########.fr       */
+/*   Updated: 2020/05/16 16:32:28 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static char		**ft_malloc_error(char **res)
 
 	i = 0;
 	while (res[i])
-		free(res[i]);
+		free(res[i++]);
 	free(res);
 	return (NULL);
 }

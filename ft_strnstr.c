@@ -6,7 +6,7 @@
 /*   By: lbagg <lbagg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 21:31:27 by lbagg             #+#    #+#             */
-/*   Updated: 2020/05/04 08:51:51 by lbagg            ###   ########.fr       */
+/*   Updated: 2020/05/19 09:24:41 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,13 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		if (big[j] == little[i])
 		{
 			ap = (char*)big + j;
-			while (big[j] == little[i] && little[i] && j < len)
-			{
-				j++;
+			while (big[j] == little[i] && little[i] && big[j] && j++ < len)
 				i++;
-			}
 			if (!little[i])
 				return (ap);
 		}
-		j++;
+		if (big[j])
+			j++;
 	}
 	return (NULL);
 }

@@ -6,35 +6,47 @@
 /*   By: lbagg <lbagg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 21:31:27 by lbagg             #+#    #+#             */
-/*   Updated: 2020/05/19 09:24:41 by student          ###   ########.fr       */
+/*   Updated: 2020/05/21 09:47:52 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+static char	*check(const char *big, const char *little, size_t size)
 {
-	char	*ap;
+	char	*start;
 	size_t	i;
-	size_t	j;
 
-	ap = (char*)big;
-	if (!*little)
-		return (ap);
-	j = 0;
-	while (big[j] && j < len)
+	start = (char*)big;
+	i = 0;
+	while (*little)
 	{
-		i = 0;
-		if (big[j] == little[i])
+		if (*big != *little || i == size)
+			return (NULL);
+		i++;
+		big++;
+		little++;
+	}
+	return (start);
+}
+
+char		*ft_strnstr(const char *big, const char *little, size_t len)
+{
+	char	*start;
+	size_t	i;
+
+	if (!*little)
+		return ((char*)big);
+	i = 0;
+	while (*big && i < len)
+	{
+		if (*big == *little)
 		{
-			ap = (char*)big + j;
-			while (big[j] == little[i] && little[i] && big[j] && j++ < len)
-				i++;
-			if (!little[i])
-				return (ap);
+			if ((start = check(big, little, len - i)))
+				return (start);
 		}
-		if (big[j])
-			j++;
+		big++;
+		i++;
 	}
 	return (NULL);
 }

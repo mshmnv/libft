@@ -1,7 +1,6 @@
 # LIBFT
 
 ![GitHub Logo](/result/result.png)
-Format: ![Alt Text](url)
 
 ## You must re-code the following functions. These function do not need any external functions:
 * memset 
